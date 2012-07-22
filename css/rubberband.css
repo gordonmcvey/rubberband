@@ -1,0 +1,752 @@
+/**
+ * RubberBand elastic grid system - Combo stylesheet
+ *
+ * This stylesheet combines the core grid sheet and the juggling sheet into a single file.  Using a single file
+ * can be advantageous if you need to keep the number of HTTP requests down, but it has the cost of increasing
+ * the size of the stylesheet
+ *
+ * @copyright Gordian Solutions and Gordon McVey
+ * @license http://www.apache.org/licenses/LICENSE-2.0.txt Apache license V2.0
+ */
+
+/* Column container */
+.columnHolder {
+	/* This is meant to cause whitespace between cells to become irrevelent */
+    letter-spacing: -0.31em;
+    word-spacing: -0.43em;
+}
+.columnHolder > * {
+	/* This is meant to restore normal word and letter spacing to the child nodes of the column holder */
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+/* Column elements */
+.columnHolder > .column, 
+.columnHolder.autobreak > * {
+	display: inline-block;
+	vertical-align: top;
+	margin: .75% 1.5% .75% 0; /* Specifies a 1.5% gutter */
+}
+
+/* Remove the gutter from the elements that mark the end of a set of columns */
+.columnHolder > :last-child, 
+.columnHolder > .endrow, 
+.columnHolder.autobreak.half > :nth-child(2n+2), 
+.columnHolder.autobreak.third > :nth-child(3n+3), 
+.columnHolder.autobreak.quarter > :nth-child(4n+4), 
+.columnHolder.autobreak.fifth > :nth-child(5n+5), 
+.columnHolder.autobreak.sixth > :nth-child(6n+6), 
+.columnHolder.autobreak.seventh > :nth-child(7n+7), 
+.columnHolder.autobreak.eighth > :nth-child(8n+8), 
+.columnHolder.autobreak.ninth > :nth-child(9n+9), 
+.columnHolder.autobreak.tenth > :nth-child(10n+10), 
+.columnHolder.autobreak.eleventh > :nth-child(11n+11), 
+.columnHolder.autobreak.twelth > :nth-child(12n+12) {
+	margin: .75% 0 .75% 0;
+}
+/* We need to make a completely different declaration for IE because IE is DUMB AS HELL! */
+.columnHolder > *.last-child,
+.columnHolder > .endrow {
+	margin: .75% 0 .75% 0;
+}
+
+/*
+ * Column dimension specifications
+ *
+ * The formula for computing column sizes is as follows 
+ * (where n is the number of columns intended to fit in the container): 
+ *
+ * (Container width - (n - 1 gutters)) / n gutters
+ */
+
+/* Columns that take up half of the space or less */
+.columnHolder > .column.half, 
+.columnHolder > .column.quarter.two, 
+.columnHolder > .column.sixth.three, 
+.columnHolder > .column.eighth.four, 
+.columnHolder > .column.tenth.five, 
+.columnHolder > .column.twelth.six, 
+.columnHolder.autobreak.half > * {
+	width: 49.25%;
+}
+.columnHolder > .column.third, 
+.columnHolder > .column.sixth.two, 
+.columnHolder > .column.ninth.three, 
+.columnHolder > .column.twelth.four,
+.columnHolder.autobreak.third > * {
+	width: 32.3333333333333%;
+}
+.columnHolder > .column.quarter, 
+.columnHolder > .column.eighth.two, 
+.columnHolder > .column.twelth.three,
+.columnHolder.autobreak.quarter > * {
+	width: 23.875%;
+}
+.columnHolder > .column.fifth, 
+.columnHolder > .column.tenth.two, 
+.columnHolder.autobreak.fifth > * {
+	width: 18.8%;
+}
+.columnHolder > .column.sixth, 
+.columnHolder > .column.twelth.two, 
+.columnHolder.autobreak.sixth > * {
+	width: 15.4166666666667%;
+}
+.columnHolder > .column.seventh, 
+.columnHolder.autobreak.seventh > * {
+	width: 13%;
+}
+.columnHolder > .column.eighth, 
+.columnHolder.autobreak.eighth > * {
+	width: 11.1875%;
+}
+.columnHolder > .column.ninth, 
+.columnHolder.autobreak.ninth > * {
+	width: 9.77777777777778%;
+}
+.columnHolder > .column.tenth, 
+.columnHolder.autobreak.tenth > * {
+	width: 8.65%;
+}
+.columnHolder > .column.eleventh, 
+.columnHolder.autobreak.eleventh > * {
+	width: 7.72727272727273%;
+}
+.columnHolder > .column.twelth,
+.columnHolder.autobreak.twelth > * {
+	width: 6.95833333333333%;
+}
+
+/* 
+ * Columns that take up more than half of the space 
+ *
+ * The formula for calculating the the column sizes is as follows 
+ * (where n is the number of columns to span across):
+ *
+ * (Normal width * n) + (n -1) gutters
+ */
+.columnHolder > .column.third.two,
+.columnHolder > .column.sixth.four, 
+.columnHolder > .column.ninth.six, 
+.columnHolder > .column.twelth.eight {
+	width: 66.1666666666666%;
+}
+
+.columnHolder > .column.quarter.three, 
+.columnHolder > .column.eighth.six, 
+.columnHolder > .column.twelth.nine {
+	width: 74.625%;
+}
+
+.columnHolder > .column.fifth.two, 
+.columnHolder > .column.tenth.four {
+	width: 39.1%;
+}
+.columnHolder > .column.fifth.three, 
+.column.tenth.six {
+	width: 59.4%;
+}
+.columnHolder > .column.fifth.four, 
+.columnHolder > .column.tenth.eight {
+	width: 79.7%;
+}
+
+.columnHolder > .column.sixth.five, 
+.columnHolder > .column.twelth.ten {
+	width: 83.0833333333335%;
+}
+
+.columnHolder > .column.seventh.two {
+	width: 27.5%;
+}
+.columnHolder > .column.seventh.three {
+	width: 42%
+}
+.columnHolder > .column.seventh.four {
+	width: 56.5%;
+}
+.columnHolder > .column.seventh.five {
+	width: 71%;
+}
+.columnHolder > .column.seventh.six {
+	width: 85.5%;
+}
+
+.columnHolder > .column.eighth.three {
+	width: 36.5625%;
+}
+.columnHolder > .column.eighth.five {
+	width: 61.9375%;
+}
+.columnHolder > .column.eighth.seven {
+	width: 87.3125%;
+}
+
+.columnHolder > .column.ninth.two {
+	width: 21.0555555555556%;
+}
+.columnHolder > .column.ninth.four {
+	width: 43.6111111111111%;
+}
+.columnHolder > .column.ninth.five {
+	width: 54.8888888888889%;
+}
+.columnHolder > .column.ninth.seven {
+	width: 77.4444444444445%;
+}
+.columnHolder > .column.ninth.eight {
+	width: 88.7222222222222%;
+}
+
+.columnHolder > .column.tenth.three {
+	width: 28.95%;
+}
+.columnHolder > .column.tenth.seven {
+	width: 69.55%;
+}
+.columnHolder > .column.tenth.nine {
+	width: 89.85%;
+}
+
+.columnHolder > .column.eleventh.two {
+	width: 16.9545454545455%;
+}
+.columnHolder > .column.eleventh.three {
+	width: 26.1818181818182%;
+}
+.columnHolder > .column.eleventh.four {
+	width: 35.4090909090909%;
+}
+.columnHolder > .column.eleventh.five {
+	width: 44.6363636363637%;
+}
+.columnHolder > .column.eleventh.six {
+	width: 53.8636363636364%;
+}
+.columnHolder > .column.eleventh.seven {
+	width: 63.0909090909091%;
+}
+.columnHolder > .column.eleventh.eight {
+	width: 72.3181818181819%;
+}
+.columnHolder > .column.eleventh.nine {
+	width: 81.5454545454546%;
+}
+.columnHolder > .column.eleventh.ten {
+	width: 90.7727272727273%;
+}
+
+.columnHolder > .column.twelth.five {
+	width: 40.7916666666667%;
+}
+.columnHolder > .column.twelth.seven {
+	width: 57.7083333333333%;
+}
+.columnHolder > .column.twelth.eleven {
+	width: 91.5416666666666%;
+}
+
+/* Column juggling */
+.column.left1,
+.column.left2,
+.column.left3,
+.column.left4,
+.column.left5,
+.column.left6,
+.column.left7,
+.column.left8,
+.column.left9,
+.column.left10,
+.column.left11,
+.column.right1,
+.column.right2,
+.column.right3,
+.column.right4,
+.column.right5,
+.column.right6,
+.column.right7,
+.column.right8,
+.column.right9,
+.column.right10,
+.column.right11, 
+.columnHolder.autobreak > .left1, 
+.columnHolder.autobreak > .left2, 
+.columnHolder.autobreak > .left3, 
+.columnHolder.autobreak > .left4, 
+.columnHolder.autobreak > .left5, 
+.columnHolder.autobreak > .left6, 
+.columnHolder.autobreak > .left7, 
+.columnHolder.autobreak > .left8, 
+.columnHolder.autobreak > .left9, 
+.columnHolder.autobreak > .left10, 
+.columnHolder.autobreak > .left11, 
+.columnHolder.autobreak > .right1, 
+.columnHolder.autobreak > .right2, 
+.columnHolder.autobreak > .right3, 
+.columnHolder.autobreak > .right4, 
+.columnHolder.autobreak > .right5, 
+.columnHolder.autobreak > .right6, 
+.columnHolder.autobreak > .right7, 
+.columnHolder.autobreak > .right8, 
+.columnHolder.autobreak > .right9, 
+.columnHolder.autobreak > .right10, 
+.columnHolder.autobreak > .right11 {
+	position: relative;
+}
+
+.column.half.left1,
+.column.quarter.left2,
+.column.sixth.left3, 
+.column.eighth.left4, 
+.column.tenth.left5, 
+.column.twelth.left6,
+.columnHolder.autobreak.half > .left1,
+.columnHolder.autobreak.quarter > .left2,
+.columnHolder.autobreak.sixth > .left3, 
+.columnHolder.autobreak.eighth > .left4, 
+.columnHolder.autobreak.tenth > .left5, 
+.columnHolder.autobreak.twelth > .left6 {
+	left: -50.75%;
+}
+.column.half.right1, 
+.column.quarter.right2, 
+.column.sixth.right3, 
+.column.eighth.right4, 
+.column.tenth.right5, 
+.column.twelth.right6, 
+.columnHolder.autobreak.half > .right1,
+.columnHolder.autobreak.quarter > .right2,
+.columnHolder.autobreak.sixth > .right3, 
+.columnHolder.autobreak.eighth > .right4, 
+.columnHolder.autobreak.tenth > .right5, 
+.columnHolder.autobreak.twelth > .right6 {
+	left: 50.75%;
+}
+
+.column.third.left1, 
+.column.sixth.left2,
+.column.ninth.left3, 
+.column.twelth.left4, 
+.columnHolder.autobreak.third > .left1, 
+.columnHolder.autobreak.sixth > .left2,
+.columnHolder.autobreak.ninth > .left3, 
+.columnHolder.autobreak.twelth > .left4 {
+	left: -33.8333333333333%;
+}
+.column.third.left2,
+.column.sixth.left4, 
+.column.ninth.left6, 
+.column.twelth.left8, 
+.columnHolder.autobreak.third > .left2, 
+.columnHolder.autobreak.sixth > .left4,
+.columnHolder.autobreak.ninth > .left6, 
+.columnHolder.autobreak.twelth > .left8 {
+	left: -67.6666666666667%;
+}
+.column.third.right1, 
+.column.sixth.right2, 
+.column.ninth.right3, 
+.column.twelth.right4, 
+.columnHolder.autobreak.third > .right1, 
+.columnHolder.autobreak.sixth > .right2,
+.columnHolder.autobreak.ninth > .right3, 
+.columnHolder.autobreak.twelth > .right4 {
+	left: 33.8333333333333%;
+}
+.column.third.right2,
+.column.sixth.right4, 
+.column.ninth.right6, 
+.column.twelth.right8, 
+.columnHolder.autobreak.third > .right2, 
+.columnHolder.autobreak.sixth > .right4,
+.columnHolder.autobreak.ninth > .right6, 
+.columnHolder.autobreak.twelth > .right8 {
+	left: 67.6666666666667%;
+}
+
+.column.quarter.left1,
+.column.eighth.left2, 
+.column.twelth.left3, 
+.columnHolder.autobreak.quarter > .left1,
+.columnHolder.autobreak.eighth > .left2, 
+.columnHolder.autobreak.twelth > .left3 {
+	left: -25.375%;
+}
+.column.quarter.left3, 
+.column.eighth.left6, 
+.column.twelth.left9, 
+.columnHolder.autobreak.quarter > .left3, 
+.columnHolder.autobreak.eighth > .left6, 
+.columnHolder.autobreak.twelth > .left9 {
+	left: -76.125%;
+}
+.column.quarter.right1, 
+.column.eighth.right2, 
+.column.twelth.right3, 
+.columnHolder.autobreak.quarter > .right1, 
+.columnHolder.autobreak.eighth > .right2, 
+.columnHolder.autobreak.twelth > .right3 {
+	left: 25.375%;
+}
+.column.quarter.right3, 
+.column.eighth.right6, 
+.column.twelth.right9, 
+.columnHolder.autobreak.quarter > .right3, 
+.columnHolder.autobreak.eighth > .right6, 
+.columnHolder.autobreak.twelth > .right9 {
+	left: 76.125%;
+}
+
+.column.fifth.left1, 
+.column.tenth.left2, 
+.columnHolder.autobreak.fifth > .left1, 
+.columnHolder.autobreak.tenth > .left2 {
+	left: -20.3%;
+}
+.column.fifth.left2, 
+.column.tenth.left4, 
+.columnHolder.autobreak.fifth > .left2, 
+.columnHolder.autobreak.tenth > .left4 {
+	left: -40.6%;
+}
+.column.fifth.left3, 
+.column.tenth.left6, 
+.columnHolder.autobreak.fifth > .left3, 
+.columnHolder.autobreak.tenth > .left6 {
+	left: -60.9%
+}
+.column.fifth.left4,
+.column.tenth.left8, 
+.columnHolder.autobreak.fifth > .left4,
+.columnHolder.autobreak.tenth > .left8 {
+	left: -81.2%
+}
+.column.fifth.right1, 
+.column.tenth.right2, 
+.columnHolder.autobreak.fifth > .right1, 
+.columnHolder.autobreak.tenth > .right2 {
+	left: 20.3%;
+}
+.column.fifth.right2, 
+.column.tenth.right4, 
+.columnHolder.autobreak.fifth > .right2, 
+.columnHolder.autobreak.tenth > .right4 {
+	left: 40.6%;
+}
+.column.fifth.right3, 
+.column.tenth.right6, 
+.columnHolder.autobreak.fifth > .right3, 
+.columnHolder.autobreak.tenth > .right6 {
+	left: 60.9%
+}
+.column.fifth.right4, 
+.column.tenth.right8, 
+.columnHolder.autobreak.fifth > .right4, 
+.columnHolder.autobreak.tenth > .right8 {
+	left: 81.2%
+}
+
+.column.sixth.left1, 
+.column.twelth.left2, 
+.columnHolder.autobreak.sixth > .left1, 
+.columnHolder.autobreak.twelth > .left2 {
+	left: -16.9166666666667%;
+}
+.column.sixth.left5, 
+.column.twelth.left10, 
+.columnHolder.autobreak.sixth > .left5, 
+.columnHolder.autobreak.twelth > .left10 {
+	left: -84.5833333333335%;
+}
+.column.sixth.right1, 
+.column.twelth.right2, 
+.columnHolder.autobreak.sixth > .right1, 
+.columnHolder.autobreak.twelth > .right2 {
+	left: 16.9166666666667%;
+}
+.column.sixth.right5, 
+.column.twelth.right10, 
+.columnHolder.autobreak.sixth > .right5, 
+.columnHolder.autobreak.twelth > .right10 {
+	left: 84.5833333333335%;
+}
+
+.column.seventh.left1, 
+.columnHolder.autobreak.seventh > .left1 {
+	left: -14.5%;
+}
+.column.seventh.left2, 
+.columnHolder.autobreak.seventh > .left2 {
+	left: -29%;
+}
+.column.seventh.left3, 
+.columnHolder.autobreak.seventh > .left3 {
+	left: -43.5%;
+}
+.column.seventh.left4, 
+.columnHolder.autobreak.seventh > .left4 {
+	left: -58%;
+}
+.column.seventh.left5, 
+.columnHolder.autobreak.seventh > .left5 {
+	left: -72.5%;
+}
+.column.seventh.left6, 
+.columnHolder.autobreak.seventh > .left6 {
+ {
+	left: -87%;
+}
+.column.seventh.right1,
+.columnHolder.autobreak.seventh > .right1 {
+	left: 14.5%;
+}
+.column.seventh.right2, 
+.columnHolder.autobreak.seventh > .right2 {
+	left: 29%;
+}
+.column.seventh.right3,
+.columnHolder.autobreak.seventh > .right3 {
+	left: 43.5%;
+}
+.column.seventh.right4, 
+.columnHolder.autobreak.seventh > .right4 {
+	left: 58%;
+}
+.column.seventh.right5, 
+.columnHolder.autobreak.seventh > .right5 {
+	left: 72.5%;
+}
+.column.seventh.right6, 
+.columnHolder.autobreak.seventh > .right6 {
+	left: 87%;
+}
+
+.column.eighth.left1, 
+.columnHolder.autobreak.eighth > .left1 {
+	left: -12.6875%;
+}
+.column.eighth.left3, 
+.columnHolder.autobreak.eighth > .left3 {
+	left: -38.0625%;
+}
+.column.eighth.left5, 
+.columnHolder.autobreak.eighth > .left5 {
+	left: -63.4375%;
+}
+.column.eighth.left7, 
+.columnHolder.autobreak.eighth > .left7 {
+	left: -88.8125%;
+}
+.column.eighth.right1, 
+.columnHolder.autobreak.eighth > .right1 {
+	left: 12.6875%;
+}
+.column.eighth.right3, 
+.columnHolder.autobreak.eighth > .right3 {
+	left: 38.0625%;
+}
+.column.eighth.right5, 
+.columnHolder.autobreak.eighth > .right5 {
+	left: 63.4375%;
+}
+.column.eighth.right7, 
+.columnHolder.autobreak.eighth > .right7 {
+	left: 88.8125%;
+}
+
+.column.ninth.left1, 
+.columnHolder.autobreak.ninth > .left1 {
+	left: -11.2777777777778%;
+}
+.column.ninth.left2,
+.columnHolder.autobreak.ninth > .left2 {
+	left: -22.5555555555556%;
+}
+.column.ninth.left4, 
+.columnHolder.autobreak.ninth > .left4 {
+	left: -45.1111111111111%;
+}
+.column.ninth.left5, 
+.columnHolder.autobreak.ninth > .left5 {
+	left: -56.3888888888889%;
+}
+.column.ninth.left7, 
+.columnHolder.autobreak.ninth > .left7 {
+	left: -78.9444444444445%;
+}
+.column.ninth.left8, 
+.columnHolder.autobreak.ninth > .left8 {
+	left: -90.2222222222222%;
+}
+.column.ninth.right1, 
+.columnHolder.autobreak.ninth > .right1 {
+	left: 11.2777777777778%;
+}
+.column.ninth.right2, 
+.columnHolder.autobreak.ninth > .right2 {
+	left: 22.5555555555556%;
+}
+.column.ninth.right4, 
+.columnHolder.autobreak.ninth > .right4 {
+	left: 45.1111111111111%;
+}
+.column.ninth.right5, 
+.columnHolder.autobreak.ninth > .right5 {
+	left: 56.3888888888889%;
+}
+.column.ninth.right7, 
+.columnHolder.autobreak.ninth > .right7 {
+	left: 78.9444444444445%;
+}
+.column.ninth.right8, .columnHolder.autobreak.ninth > .right8 {
+	left: 90.2222222222222%;
+}
+
+.column.tenth.left1, 
+.columnHolder.autobreak.tenth > .left1 {
+	left: -10.15%;
+}
+.column.tenth.left3,
+.columnHolder.autobreak.tenth > .left3 {
+	left: -30.45%;
+}
+.column.tenth.left7, 
+.columnHolder.autobreak.tenth > .left7 {
+	left: -71.05%;
+}
+.column.tenth.left9, 
+.columnHolder.autobreak.tenth > .left9 {
+	left: -91.35%;
+}
+.column.tenth.right1, 
+.columnHolder.autobreak.tenth > .right1 {
+	left: 10.15%;
+}
+.column.tenth.right3, 
+.columnHolder.autobreak.tenth > .right3 {
+	left: 30.45%;
+}
+.column.tenth.right7, 
+.columnHolder.autobreak.tenth > .right7 {
+	left: 71.05%;
+}
+.column.tenth.right9, 
+.columnHolder.autobreak.tenth > .right9 {
+	left: 91.35%;
+}
+
+.column.eleventh.left1, 
+.columnHolder.autobreak.eleventh > .left1 {
+	left: -9.22727272727273%;
+}
+.column.eleventh.left2, 
+.columnHolder.autobreak.eleventh > .left2 {
+	left: -18.4545454545455%;
+}
+.column.eleventh.left3, 
+.columnHolder.autobreak.eleventh > .left3 {
+	left: -27.6818181818182%;
+}
+.column.eleventh.left4, 
+.columnHolder.autobreak.eleventh > .left4 {
+	left: -36.9090909090909%;
+}
+.column.eleventh.left5, 
+.columnHolder.autobreak.eleventh > .left5 {
+	left: -46.1363636363637%;
+}
+.column.eleventh.left6, 
+.columnHolder.autobreak.eleventh > .left6 {
+	left: -55.3636363636364%;
+}
+.column.eleventh.left7, 
+.columnHolder.autobreak.eleventh > .left7 {
+	left: -64.5909090909091%;
+}
+.column.eleventh.left8, 
+.columnHolder.autobreak.eleventh > .left8 {
+	left: -73.8181818181819%;
+}
+.column.eleventh.left9, 
+.columnHolder.autobreak.eleventh > .left9 {
+	left: -83.0454545454546%;
+}
+.column.eleventh.left10, .columnHolder.autobreak.eleventh > .left10 {
+	left: -92.2727272727273%;
+}
+.column.eleventh.right1, 
+.columnHolder.autobreak.eleventh > .right1 {
+	left: 9.22727272727273%;
+}
+.column.eleventh.right2, 
+.columnHolder.autobreak.eleventh > .right2 {
+	left: 18.4545454545455%;
+}
+.column.eleventh.right3, 
+.columnHolder.autobreak.eleventh > .right3 {
+	left: 27.6818181818182%;
+}
+.column.eleventh.right4, 
+.columnHolder.autobreak.eleventh > .right4 {
+	left: 36.9090909090909%;
+}
+.column.eleventh.right5, 
+.columnHolder.autobreak.eleventh > .right5 {
+	left: 46.1363636363637%;
+}
+.column.eleventh.right6, 
+.columnHolder.autobreak.eleventh > .right6 {
+	left: 55.3636363636364%;
+}
+.column.eleventh.right7, 
+.columnHolder.autobreak.eleventh > .right7 {
+	left: 64.5909090909091%;
+}
+.column.eleventh.right8, 
+.columnHolder.autobreak.eleventh > .right8 {
+	left: 73.8181818181819%;
+}
+.column.eleventh.right9, 
+.columnHolder.autobreak.eleventh > .right9 {
+	left: 83.0454545454546%;
+}
+.column.eleventh.right10, 
+.columnHolder.autobreak.eleventh > .right10 {
+	left: 92.2727272727273%;
+}
+
+.column.twelth.left1, 
+.columnHolder.autobreak.twelth > .left1 {
+ {
+	left: -8.45833333333333%;
+}
+.column.twelth.left5, 
+.columnHolder.autobreak.twelth > .left5 {
+	left: -42.2916666666667%;
+}
+.column.twelth.left7, 
+.columnHolder.autobreak.twelth > .left7 {
+	left: -59.2083333333333%;
+}
+.column.twelth.left11, 
+.columnHolder.autobreak.twelth > .left11 {
+	left: -93.0416666666666%;
+}
+.column.twelth.right1,
+ .columnHolder.autobreak.twelth > .right1 {
+ {
+	left: 8.45833333333333%;
+}
+.column.twelth.right5, 
+ .columnHolder.autobreak.twelth > .right5 {
+	left: 42.2916666666667%;
+}
+.column.twelth.right7, 
+ .columnHolder.autobreak.twelth > .right7 {
+	left: 59.2083333333333%;
+}
+.column.twelth.right11, 
+ .columnHolder.autobreak.twelth > .right11 {
+	left: 93.0416666666666%;
+}
