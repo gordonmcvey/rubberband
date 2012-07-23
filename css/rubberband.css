@@ -27,6 +27,7 @@
 	display: inline-block;
 	vertical-align: top;
 	margin: .75% 1.5% .75% 0; /* Specifies a 1.5% gutter */
+	box-sizing: border-box; /* We don't want to have to put another element inside the column just to get padding */
 }
 
 /* Remove the gutter from the elements that mark the end of a set of columns */
@@ -43,11 +44,6 @@
 .columnHolder.autobreak.tenth > :nth-child(10n+10), 
 .columnHolder.autobreak.eleventh > :nth-child(11n+11), 
 .columnHolder.autobreak.twelth > :nth-child(12n+12) {
-	margin: .75% 0 .75% 0;
-}
-/* We need to make a completely different declaration for IE because IE is DUMB AS HELL! */
-.columnHolder > *.last-child,
-.columnHolder > .endrow {
 	margin: .75% 0 .75% 0;
 }
 
