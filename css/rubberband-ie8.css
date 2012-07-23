@@ -1,0 +1,5 @@
+/* We need to make a completely different declaration for IE because IE is DUMB AS HELL! */
+.columnHolder > *.last-child,
+.columnHolder > .endrow {
+	margin: .75% 0 .75% 0;
+}
