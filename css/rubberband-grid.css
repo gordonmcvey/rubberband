@@ -28,6 +28,7 @@
 	display: inline-block;
 	vertical-align: top;
 	margin: .75% 1.5% .75% 0; /* Specifies a 1.5% gutter */
+	-moz-box-sizing: border-box; /* Firefox doesn't support the official property yet? */
 	box-sizing: border-box; /* We don't want to have to put another element inside the column just to get padding */
 }
 
